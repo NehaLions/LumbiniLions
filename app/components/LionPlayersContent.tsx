@@ -1,8 +1,6 @@
 "use client"
 import { useState, useRef, useEffect } from 'react';
-import PlayerCard from './PlayerCard';
-import styles from './PlayerCard.module.css';
-import GsapCarousel from '../gsap/page';
+
 
 const LionPlayersContent = () => {
   const [currentIndex, setCurrentIndex] = useState(0);

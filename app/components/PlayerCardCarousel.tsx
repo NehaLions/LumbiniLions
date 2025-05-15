@@ -4,11 +4,27 @@ import React, { useState, useEffect, useCallback } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import Image from "next/image";
 import Link from "next/link";
-import { usePlayerData } from "../hooks/usePlayerData";
 import styles from "./PlayerCardCarousel.module.css";
 
-export const PlayerCardCarousel = () => {
-  const { players, loading, error } = usePlayerData();
+interface Player {
+  id: string;
+  name: string;
+  slug: string;
+  class: "Batsman" | "WicketKeeper" | "AllRounder" | "Bowler";
+  description: string;
+  matches: number;
+  strikerate: number;
+  wickets: number;
+  runs: number;
+  imageId?: string | null;
+  jersey: number;
+}
+
+interface PlayerCardCarouselProps {
+  players: Player[];
+}
+
+const PlayerCardCarousel: React.FC<PlayerCardCarouselProps> = ({ players }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [autoPlayEnabled, setAutoPlayEnabled] = useState(true);
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -88,18 +104,10 @@ export const PlayerCardCarousel = () => {
     };
   }, [embla, onSelect]);
 
-  if (loading) {
-    return (
-      <div className="h-64 flex items-center justify-center">
-        <div className="w-12 h-12 border-4 border-amber-500 border-t-transparent rounded-full animate-spin"></div>
-      </div>
-    );
-  }
-
-  if (error || players.length === 0) {
+  if (players.length === 0) {
     return (
       <div className="text-center py-8">
-        <p className="text-red-400">Failed to load player data</p>
+        <p className="text-red-400">No players available</p>
       </div>
     );
   }
@@ -164,7 +172,7 @@ export const PlayerCardCarousel = () => {
             <div className={styles.emblaContainer}>
               {players.map((player) => {
                 // Construct the image path
-                const imageName = player.firstName.toLowerCase();
+                const imageName = player.name.split(' ')[0].toLowerCase();
                 const imgSrc = `/playercards/${imageName}card.webp`;
                 // const imgSrc = "/playercards/tomcard.webp"
 
@@ -200,15 +208,15 @@ export const PlayerCardCarousel = () => {
           </div>
         </div>
         <div className={styles.dotContainer}>
-  {scrollSnaps.map((_, index) => (
-    <button
-      key={index}
-      className={`${styles.dot} ${index === selectedIndex ? styles.dotSelected : ''}`}
-      onClick={() => scrollTo(index)}
-      aria-label={`Go to slide ${index + 1}`}
-    />
-  ))}
-</div>
+          {scrollSnaps.map((_, index) => (
+            <button
+              key={index}
+              className={`${styles.dot} ${index === selectedIndex ? styles.dotSelected : ''}`}
+              onClick={() => scrollTo(index)}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );

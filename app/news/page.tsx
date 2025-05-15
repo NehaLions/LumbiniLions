@@ -5,8 +5,7 @@ import Image from 'next/image'
 import Newscard1 from '../components/newscard1'
 import { prisma } from '@/lib/db'
 import { getExcerptFromContent, getFirstImageFromContent } from '@/lib/editorjs-parser'
-import FeaturedNewsClient from '../components/FeaturedNewsClient'
-import NewsTop from '../components/newstop'
+
 import MergedFeaturedNews from '../components/MergedFeaturedNews'
 
 export const revalidate = 86400; // 24 hours
@@ -60,7 +59,7 @@ export default async function NewsContent1() {
     const displayFeatured = featuredPost || fallbackNews;
     const excerpt = getExcerptFromContent(displayFeatured.content, 150) || displayFeatured.subtitle || ''
     return (
-        <div className="overflow-x-hidden w-full"> 
+        <div className=" overflow-x-hidden w-full"> 
                     {/* <FeaturedNewsClient displayFeatured={displayFeatured} ExcerptFromContent='excerpt'/> */}
                         <MergedFeaturedNews displayFeatured={displayFeatured} ExcerptFromContent={excerpt}/>
                         <div className="flex justify-center h-full w-full min-h-screen z-[10] pt-0 md:pt-10  overflow-hidden relative">
@@ -90,7 +89,7 @@ export default async function NewsContent1() {
                 </div> */} 
             
             {/* News grid positioned to overlay the background */}
-            <div className="relative z-20 mx-auto max-w-6xl mt-[194px] md:mt-[4vh]">
+            <div className="relative z-20 mx-auto max-w-6xl mt-[120px] md:mt-[4vh]">
                 <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols- ">
                     {/* {displayNews.slice(1).map(news => ( */}
                     {displayNews.map(news => (

@@ -21,7 +21,7 @@ function MergedFeaturedNews({
   ExcerptFromContent,
 }: FeaturedNewsProps) {
   return (
-    <div className="w-full relative  backdrop-blur-sm   mt-[10vh] overflow-hidden  ">
+    <div className="w-full relative  backdrop-blur-sm   mt-[2vh] overflow-hidden  ">
       {/* Background Image */}
       <div className="w-full h-[300px] md:h-[595px] relative">
         <Image
@@ -54,7 +54,7 @@ function MergedFeaturedNews({
         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#06101B]"></div>
         {/* Text Overlay */}
         <div className="absolute bottom-0 left-0 w-full p-8 text-center z-[10]">
-          <h2 className="text-3xl md:text-4xl font-semibold text-[32px] font-['poppins'] text-white mb-2">
+          <h2 className="text-2xl md:text-4xl font-semibold md:text-[32px]  font-['poppins'] text-white mb-2">
             {displayFeatured.title}
           </h2>
           <p className="text-white opacity-60 mb-4 max-w-3xl text-[16px] font-['poppins'] mx-auto">

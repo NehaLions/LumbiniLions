@@ -20,6 +20,7 @@ import PlayerCardCarousel from "../components/PlayerCardCarousel";
 import NewsContent from "../components/NewsContent";
 import QuizPage from "../quizpage/page";
 import NewsContent1 from "../news/page";
+import PlayerCardCarouselServer from "../components/PlayerCardCarouselServer";
 
 export const revalidate = 21600; // 6 hours
 
@@ -136,7 +137,7 @@ export default async function RootPage() {
         <ResultsSection results={resultArray} />
         {/* <LionPlayers /> */}
         <QuizPage/>
-        <PlayerCardCarousel/>
+        <PlayerCardCarouselServer/>
         <FeaturedVideos/>
         <NewsContent/>
         {/* <NewsContent/> */}

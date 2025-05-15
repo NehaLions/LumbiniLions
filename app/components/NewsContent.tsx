@@ -5,9 +5,7 @@ import Image from 'next/image'
 import Newscard from '../components/newscard'
 import { prisma } from '@/lib/db'
 import { getExcerptFromContent, getFirstImageFromContent } from '@/lib/editorjs-parser'
-import FeaturedNewsClient from '../components/FeaturedNewsClient'
-import NewsTop from '../components/newstop'
-import MergedFeaturedNews from '../components/MergedFeaturedNews'
+
 
 // This must be a Server Component to directly use Prisma
 export default async function NewsContent() {
@@ -52,7 +50,7 @@ export default async function NewsContent() {
     // Use database posts if available, otherwise use fallback
     const displayNews = newsItems.length > 0 ? newsItems : fallbackNews;
     const displayFeatured = featuredPost || fallbackNews[0];
-    const excerpt = getExcerptFromContent(displayFeatured.content, 150) || displayFeatured.subtitle || ''
+    // const excerpt = getExcerptFromContent(displayFeatured.content, 150) || displayFeatured.subtitle || ''
     return (
         <div className="overflow-x-hidden w-full"> 
                     {/* <FeaturedNewsClient displayFeatured={displayFeatured} ExcerptFromContent='excerpt'/> */}
