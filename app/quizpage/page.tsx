@@ -44,7 +44,7 @@ const QuizPage = async () => {
   } catch (error) {
     quizQuestions = fallbackQuestions;
   }
-  //for redeploy change
+  //for redeploy change1
   
   return (
     <QuizCard questions={quizQuestions} leaderboard = {leaderboard} />
