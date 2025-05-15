@@ -217,54 +217,64 @@ export default function GalleryClientPage({ initialImages }) {
         {error ? (
           <div className="text-center text-red-500">{error}</div>
         ) : (
-          <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
-            {filteredImages.map(image => (
-              <div
-                key={image.id}
-                className="group relative rounded-lg overflow-hidden bg-neutral-900 border border-neutral-800"
-              >
-                <div className="relative h-[235px] w-[353px] mx-auto">
-                  <Image
-                    src={`${image.imageUrl.replace('/upload/', '/upload/f_auto,q_auto/')}`}
-                    alt={image.title || 'Gallery Image'}
-                    width={353}
-                    height={235}
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
+<div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
+  {filteredImages.map(image => (
+    <div
+      key={image.id}
+      className="group relative rounded-lg overflow-hidden bg-neutral-900 border border-neutral-800"
+    >
+      {/* Make the image area clickable */}
+      <div
+        className="relative h-[235px] w-[353px] mx-auto cursor-pointer"
+        onClick={() => openmodal(image)}
+        tabIndex={0}
+        role="button"
+        aria-label="Expand image"
+        onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') openmodal(image); }}
+      >
+        <Image
+          src={`${image.imageUrl.replace('/upload/', '/upload/f_auto,q_auto/')}`}
+          alt={image.title || 'Gallery Image'}
+          width={353}
+          height={235}
+          className="object-cover transition-transform duration-500 group-hover:scale-105"
+        />
 
-                  {/* Overlay on hover */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                    <div className="w-full">
-                      <p className="text-white font-medium text-lg">
-                        {image.title || 'Gallery Image'}
-                      </p>
-                      <p className="text-white/70 text-sm">
-                        {getCategoryText(image)}
-                      </p>
-                    </div>
-                    {/* Expand button */}
-                    <button 
-                      onClick={() => openmodal(image)} 
-                      className="absolute top-4 right-4 bg-black/50 text-white p-2 rounded-full hover:bg-amber-500 hover:text-black transition-colors"
-                    >
-                      <Maximize2 className="w-5 h-5" />
-                    </button>
-                  </div>
-                </div>
-              </div>
-            ))}
+        {/* Overlay on hover */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4 pointer-events-none">
+          <div className="w-full">
+            <p className="text-white font-medium text-lg">
+              {image.title || 'Gallery Image'}
+            </p>
+            <p className="text-white/70 text-sm">
+              {getCategoryText(image)}
+            </p>
           </div>
+          {/* Expand button (optional, but now redundant) */}
+          <button 
+            onClick={e => { e.stopPropagation(); openmodal(image); }} 
+            className="absolute top-4 right-4 bg-black/50 text-white p-2 rounded-full hover:bg-amber-500 hover:text-black transition-colors"
+            tabIndex={-1}
+            aria-label="Expand image"
+          >
+            <Maximize2 className="w-5 h-5" />
+          </button>
+        </div>
+      </div>
+    </div>
+  ))}
+</div>
         )}
 
         {/* Load More Button - Only show if there are images and not viewing folders */}
-        {selectedParentCategory !== null && filteredImages.length > 0 && (
+        {/* {selectedParentCategory !== null && filteredImages.length > 0 && (
           <div className="mt-12 flex justify-center">
             <button className="bg-amber-500 hover:bg-amber-600 text-black px-8 py-3 rounded-lg font-semibold transition-colors flex items-center space-x-2">
               <span>Load More Images</span>
               <Camera className="w-5 h-5 ml-2" />
             </button>
           </div>
-        )}
+        )} */}
         
         {/* Gallery Info section remains the same */}
         <div className="mt-20 mb-10 border-t border-white/10 pt-10">
@@ -292,23 +302,32 @@ export default function GalleryClientPage({ initialImages }) {
       </main>
       
       {/* Full screen modal preview */}
-      {isModalOpen && selectedImage && (
-        <div className='fixed inset-0 bg-black/80 flex items-center justify-center z-50'>
-          <div className='relative w-full max-w-4xl'>
-            <button className='absolute top-4 right-4 bg-black/50 text-white p-2 rounded-full hover:bg-red-500 transition-colors'
-              onClick={closeModal}>
-              <X className='w-6 h-6'/>
-            </button>
-            <Image 
-              src={selectedImage.imageUrl}
-              alt={selectedImage.title || "Gallery Image"}
-              width={1200}
-              height={800}
-              className='object-contain'
-            />
-          </div>
-        </div>
-      )}
+     {isModalOpen && selectedImage && (
+  <div className='fixed inset-0 bg-black/80 flex items-center justify-center z-50'>
+    <div className='relative w-full flex items-center justify-center' style={{ minHeight: '60vh' }}>
+      <button
+        className='absolute top-4 right-4 bg-black/50 text-white p-2 rounded-full hover:bg-red-500 transition-colors z-10'
+        onClick={closeModal}
+        aria-label="Close preview"
+      >
+        <X className='w-6 h-6'/>
+      </button>
+      <Image
+        src={selectedImage.imageUrl}
+        alt={selectedImage.title || "Gallery Image"}
+        width={1200}
+        height={800}
+        className='object-contain'
+        style={{
+          maxWidth: '90vw',
+          maxHeight: '80vh',
+          borderRadius: '1rem',
+          boxShadow: '0 8px 32px rgba(0,0,0,0.7)'
+        }}
+      />
+    </div>
+  </div>
+)}
     </div>
   );
 }

@@ -33,7 +33,7 @@ const QuizPage = async () => {
 
     const shuffledQuestions = dbQuestions
     .sort(() => Math.random() - 0.5)
-    .slice(0, 10);
+    .slice(0, 5);
     
     if (dbQuestions && dbQuestions.length > 0) {
       // No mapping needed if your schema and component both use lowercase
