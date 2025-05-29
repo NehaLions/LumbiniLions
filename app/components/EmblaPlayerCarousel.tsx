@@ -130,9 +130,9 @@ export const EmblaPlayerCarousel = () => {
         <h2 className="text-2xl md:text-4xl md:ml-[10vw] font-bold text-start mb-0">
           <span className="text-white-500 font-[poppins]">OUR LIONS</span> 
         </h2>
-        <p className="text-1xl pb-[5%] md:text-[14px] mt-10px md:ml-[10.1vw] opacity-80 font-[poppins] text-start mb-0">
+        {/* <p className="text-1xl pb-[5%] md:text-[14px] mt-10px md:ml-[10.1vw] opacity-80 font-[poppins] text-start mb-0">
           View all lions
-        </p>
+        </p> */}
         
         {/* Main carousel with roar controls */}
         <div className={styles.emblaMain}>
@@ -175,7 +175,7 @@ export const EmblaPlayerCarousel = () => {
     <span className="text-gray-400 text-sm">Jersey: {player.jersey}</span>
   </div>
   
-  <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+  <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-7 mb-6">
     <div className={styles.statItem}>
       <span className="text-amber-400 text-lg font-bold">{player.matches}</span>
       <span className="text-sm text-gray-300">Matches</span>

@@ -25,15 +25,14 @@ import PlayerCardCarouselServer from "../components/PlayerCardCarouselServer";
 export const revalidate = 21600; // 6 hours
 
 export default async function RootPage() {
-  let resultArray = [];
+  let resultArray: any = [];
   try {
-     resultArray = await prisma.schedule.findMany({
-      orderBy: { matchDate: 'desc' },
-      take: 5
+    resultArray = await prisma.schedule.findMany({
+      orderBy: { matchDate: "desc" },
+      take: 5,
     });
-  } catch (error) {
-  }
-  
+  } catch (error) {}
+
   return (
     <div className="min-h-screen relative">
       {/* Hero Section with background image */}
@@ -51,7 +50,7 @@ export default async function RootPage() {
               quality={85}
             />
           </div>
-          
+
           {/* Mobile background - using the same image but with different sizing */}
           <div className="md:hidden relative h-full w-full">
             <Image
@@ -59,20 +58,20 @@ export default async function RootPage() {
               alt="Background"
               fill
               className="object-cover object-center"
-              priority ={false}
+              priority={false}
               quality={75}
             />
           </div>
         </div>
-      
+
         <ScrollEffects />
-        
-        <HeroPlayers/>
+
+        <HeroPlayers />
 
         {/* Team image with viewport-relative positioning
         <div className="absolute inset-0 z-[5] flex items-center justify-center">
           {/* Desktop sizing */}
-          {/* <div className="hidden md:block relative top-[13.5vh] transform scale-[1.45]">
+        {/* <div className="hidden md:block relative top-[13.5vh] transform scale-[1.45]">
             <Image 
               src="/team.webp" 
               height={895} 
@@ -84,7 +83,7 @@ export default async function RootPage() {
           </div>
           
           {/* Mobile sizing */}
-          {/* <div className="md:hidden relative w-full h-[60vh] flex items-center justify-center">
+        {/* <div className="md:hidden relative w-full h-[60vh] flex items-center justify-center">
             <div className="relative w-[90%] max-w-[350px]">
               <Image 
                 src="/team.webp" 
@@ -100,7 +99,7 @@ export default async function RootPage() {
 
         {/* Backdrop shadow overlay for better text readability */}
         <div className="absolute inset-0 h-[115vh] z-[3] bg-gradient-to-b from-black/0 via-black/10 to-[#06101B] pointer-events-none"></div>
-        
+
         {/* Sponsors section with viewport-relative positioning */}
         <div className="absolute w-full hidden md:block z-[12] bottom-[26vh] md:bottom-[-15vh] lg:bottom-[2vh]">
           <div className="container mx-auto px-4 md:px-[150px]">
@@ -112,11 +111,13 @@ export default async function RootPage() {
                 { src: "/yeti.webp", alt: "Yeti Airlines" },
                 { src: "/fortuna.webp", alt: "Fortuna" },
                 { src: "/nidpil.webp", alt: "NIDPIL" },
-                { src: "/folliderm.webp", alt: "Folliderm" }
+                { src: "/folliderm.webp", alt: "Folliderm" },
               ].map((sponsor, index) => (
                 <div key={index} className={styles.logoWrapper}>
-                  <div className={`${styles.logoContainer} flex justify-center items-center`}>
-                    <Image 
+                  <div
+                    className={`${styles.logoContainer} flex justify-center items-center`}
+                  >
+                    <Image
                       src={sponsor.src}
                       width={300}
                       height={300}
@@ -133,13 +134,13 @@ export default async function RootPage() {
       </div>
 
       {/* Content Sections - using viewport positioning */}
-      <div className="relative overflow-hidden bg-[#06101B] z-[11] pt-[10vh] md:pt-[10vh] md:mt-[0] mt-[-32.5vh]">         
+      <div className="relative overflow-hidden bg-[#06101B] z-[11] pt-[10vh] md:pt-[10vh] md:mt-[0] mt-[-32.5vh]">
         <ResultsSection results={resultArray} />
         {/* <LionPlayers /> */}
-        <QuizPage/>
-        <PlayerCardCarouselServer/>
-        <FeaturedVideos/>
-        <NewsContent/>
+        {/* <QuizPage /> */}
+        <PlayerCardCarouselServer />
+        <FeaturedVideos />
+        <NewsContent />
         {/* <NewsContent/> */}
       </div>
     </div>

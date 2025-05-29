@@ -125,9 +125,9 @@ export default function AboutPage() {
             <a href="/contact" className="bg-amber-500 hover:bg-amber-600 text-[#06101B] px-6 py-3 rounded-lg font-bold transition-colors">
               Contact Us
             </a>
-            <a href="/fixtures" className="bg-[#0F1923] hover:bg-[#1a2736] text-white px-6 py-3 rounded-lg font-bold transition-colors">
+            {/* <a href="/fixtures" className="bg-[#0F1923] hover:bg-[#1a2736] text-white px-6 py-3 rounded-lg font-bold transition-colors">
               Upcoming Matches
-            </a>
+            </a> */}
           </div>
         </div>
       </div>

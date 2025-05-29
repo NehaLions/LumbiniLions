@@ -94,7 +94,7 @@ const TeamClientPage = ({ initialPlayers }) => {
                 <div className='text-white font-bold text-[20px] font-[poppins] flex flex-wrap gap-6 mb-12 justify-center'>
                     <button 
                         onClick={() => setSearchItem(null)}
-                        className={`px-2 py-1 transition-all duration-300 ${
+                        className={`px-2 py-1 transition-all duration-300 cursor-pointer ${
                             searchItem === null 
                             ? 'text-white border-b-2 border-amber-500' 
                             : 'text-white/60 hover:text-white'
@@ -104,7 +104,7 @@ const TeamClientPage = ({ initialPlayers }) => {
                     </button>
                     <button 
                         onClick={() => setSearchItem("AllRounder")}
-                        className={`px-2 py-1 transition-all duration-300 ${
+                        className={`px-2 py-1 transition-all duration-300 cursor-pointer ${
                             searchItem === "AllRounder" 
                             ? 'text-white border-b-2 border-amber-500' 
                             : 'text-white/60 hover:text-white'
@@ -114,7 +114,7 @@ const TeamClientPage = ({ initialPlayers }) => {
                     </button>
                     <button 
                         onClick={() => setSearchItem("Batsman")}
-                        className={`px-2 py-1 transition-all duration-300 ${
+                        className={`px-2 py-1 transition-all duration-300 cursor-pointer ${
                             searchItem === "Batsman" 
                             ? 'text-white border-b-2 border-amber-500' 
                             : 'text-white/60 hover:text-white'
@@ -124,7 +124,7 @@ const TeamClientPage = ({ initialPlayers }) => {
                     </button>
                     <button 
                         onClick={() => setSearchItem("Bowler")}
-                        className={`px-2 py-1 transition-all duration-300 ${
+                        className={`px-2 py-1 transition-all duration-300 cursor-pointer ${
                             searchItem === "Bowler" 
                             ? 'text-white border-b-2 border-amber-500' 
                             : 'text-white/60 hover:text-white'
@@ -134,7 +134,7 @@ const TeamClientPage = ({ initialPlayers }) => {
                     </button>
                     <button 
                         onClick={() => setSearchItem("WicketKeeper")}
-                        className={`px-2 py-1 transition-all duration-300 ${
+                        className={`px-2 py-1 transition-all duration-300 cursor-pointer ${
                             searchItem === "WicketKeeper" 
                             ? 'text-white border-b-2 border-amber-500' 
                             : 'text-white/60 hover:text-white'
@@ -158,7 +158,7 @@ const TeamClientPage = ({ initialPlayers }) => {
                         </div>
                         
                         {/* Name container aligned with card */}
-                        <div className="w-[270px] text-left pl-4">
+                        <div className="w-[270px] text-left pl-4 mt-5">
                             <h3 className="flex flex-col font-['poppins'] tracking-wide">
                                 <span className="text-amber-500 text-[14px] font-semibold leading-tight">
                                     {player.lastName || ''}

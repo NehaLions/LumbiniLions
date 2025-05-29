@@ -178,7 +178,7 @@ const QuizCard: React.FC<QuizCardProps> = ({ questions, leaderboard = [] }) => {
       </div>
       
       <Link href="/">
-        <button className="px-5 py-2 rounded-lg bg-neutral-700 hover:bg-neutral-600 text-white text-base font-['poppins'] transition-transform hover:scale-105">
+        <button className="px-5 py-2 rounded-lg bg-neutral-700 hover:bg-neutral-600 text-white text-base font-['poppins'] transition-transform hover:scale-105 cursor-pointer">
           BACK TO HOME
         </button>
       </Link>
