@@ -44,7 +44,7 @@ const MatchesPage = async () => {
     try {
        results = await prisma.schedule.findMany({
         orderBy: { matchDate: 'desc' },
-        take: 5,
+        // take: 5,
         where: {
           // isCompleted: false
         }
