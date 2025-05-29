@@ -255,13 +255,13 @@ const Navbar = () => {
               >
                 Gallery
               </Link>
-              <Link
+              {/* <Link
                 href="/shop"
                 className="text-white hover:text-amber-500 uppercase font-['poppins'] font-bold text-[14px] leading-[100%] tracking-[0.02em] text-center py-2 border-b border-neutral-800"
                 onClick={closeMenu}
               >
                 Shop
-              </Link>
+              </Link> */}
               <Link
                 href="/about"
                 className="text-white hover:text-amber-500 uppercase font-['poppins'] font-bold text-[14px] leading-[100%] tracking-[0.02em] text-center py-2 border-b border-neutral-800"
