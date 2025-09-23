@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "destination": "https://www.lumbinilions.com.np/$1",
+      "permanent": true
+    }
+  ]
+}
